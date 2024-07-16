@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Container } from "./container";
 
 export function Footer() {
@@ -9,6 +10,7 @@ export function Footer() {
           pt-4 pb-24">
 
           <span>&copy; 2024 - Hallpass and Friends - all rights reserved</span>
+          <Link href="/studio">studio</Link>
         </div>
       </Container>
     </footer>

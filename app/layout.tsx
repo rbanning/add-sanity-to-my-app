@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   icons: {
-    icon: '/favicon.ico'
+    icon: '/favicon.png'
   },
   authors: [ {name: 'Rob Banning', url: 'https://hallpassandfriends.com'}]
 }
