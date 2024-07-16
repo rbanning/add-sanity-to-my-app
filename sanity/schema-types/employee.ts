@@ -1,8 +1,9 @@
 import { defineField, defineType } from "sanity";
 import {UserIcon} from "@sanity/icons";
+import { documentTypeNames } from "@/lib";
 
 export default defineType({
-  name: "employee",
+  name: documentTypeNames.employee,
   title: "Employee",
   type: "document",
   icon: UserIcon,
@@ -35,9 +36,16 @@ export default defineType({
       validation: (rule) => rule.required()
     }),
     defineField({
+      name: "bio",
+      title: "Biography",
+      type: "text",
+      validation: (rule) => rule.required()
+    }),
+    defineField({
       name: "rating",
       title: "Rating",
       type: "number",
+      description: "used to order the employees by 'importance'",
       validation: (rule) => rule.required().min(1).max(5)
     }),
 
