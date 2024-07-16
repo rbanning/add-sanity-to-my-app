@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LayoutWrapper } from "../_components/layout-wrapper";
 
 export const metadata: Metadata = {
   title: "Add Sanity to My App",
@@ -12,8 +13,8 @@ export default function SiteLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <body className="bg-teal-100 text-teal-900">
+    <LayoutWrapper>
       {children}
-    </body>
+    </LayoutWrapper>
   );
 }
