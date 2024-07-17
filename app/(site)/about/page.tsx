@@ -1,13 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 import { Container } from "@/app/_components/container";
 import { orgInfo } from "@/lib";
-import { Employee, IEmployee } from "@/models";
-import { urlForImage } from "@/sanity/lib/image";
-import { sanityFetchMultiple } from "@/sanity/lib/sanity-fetch";
-import { EMPLOYEE_QUERIES } from "@/sanity/queries";
+import { Suspense } from "react";
+import { EmployeeList } from "./employee-list";
+import SiteLoading from "../loading";
 
 export default async function AboutPage() {
-  const employees = await sanityFetchMultiple<IEmployee>(EMPLOYEE_QUERIES.list, null, Employee);
 
   return (
     <Container>
@@ -23,28 +20,12 @@ export default async function AboutPage() {
 
       <div className="my-8">
         <h2 className="text-teal-600 text-3xl mb-16">Meet the Team</h2>
-        <div className="flex flex-col gap-24">
-          {employees.map((e: IEmployee, index) => (
-            <div key={e._id} className="grid grid-cols-2 gap-4">
-              <figure className="rounded-md overflow-hidden" style={{order: (index % 2 === 0 ? 1 : 0)}}>
-                <img 
-                  src={urlForImage(e.image)}
-                  alt={e.caption}
-                />
-              </figure>
-              <div className="" style={{order: index % 2}}>
-
-                <div className="text-2xl font-bold">{e.name}</div>
-                <div className="block">{e.roles.join(', ')}</div>
-                <p className="text-sm">
-                  {e.bio}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <Suspense fallback={(<SiteLoading />)}>
+          <EmployeeList />
+        </Suspense>
       </div>
       
+
 
     </Container>
   )

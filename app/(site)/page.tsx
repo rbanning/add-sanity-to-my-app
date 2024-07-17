@@ -1,6 +1,9 @@
 import { Container } from "../_components/container";
 
-export default function Home() {
+export default async function Home() {
+  //artificial delay
+  await new Promise(resolve => setTimeout(resolve, 5000));
+
   return (
       <Container>
         <h1 className="">Hello World</h1>
