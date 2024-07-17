@@ -1,12 +1,15 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Metadata } from "next/types";
 
 const inter = Inter({ subsets: ["latin"] });
 
+
 export const metadata: Metadata = {
-  title: "Add Sanity to My App",
-  description: "What do we need to add to an existing NextJs app to use Sanity (client) and embed Sanity Studio?"
+  icons: {
+    icon: '/favicon.png'
+  },
+  authors: [ {name: 'Rob Banning', url: 'https://hallpassandfriends.com'}]
 }
 
 export default function RootLayout({
@@ -15,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-teal-100 text-teal-900`}>{children}</body>
+    <html lang="en" className={inter.className}>
+      {children}
     </html>
   );
 }
